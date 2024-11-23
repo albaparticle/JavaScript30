@@ -31,7 +31,7 @@
       border-bottom: 0;
     }
 
-    input:checked + p {
+    input:checked + label {
       background: #F9F9F9;
       text-decoration: line-through;
     }
@@ -59,44 +59,69 @@
   -->
   <div class="inbox">
     <div class="item">
-      <input type="checkbox">
-      <p>This is an inbox layout.</p>
+      <input type="checkbox" id="item1">
+      <label for="item1">This is an inbox layout.</label>
     </div>
     <div class="item">
-      <input type="checkbox">
-      <p>Check one item</p>
+      <input type="checkbox" id="item2">
+      <label for="item2">Check one item</label>
     </div>
     <div class="item">
-      <input type="checkbox">
-      <p>Hold down your Shift key</p>
+      <input type="checkbox" id="item3">
+      <label for="item3">Hold down your Shift key</label>
     </div>
     <div class="item">
-      <input type="checkbox">
-      <p>Check a lower item</p>
+      <input type="checkbox" id="item4">
+      <label for="item4">Check a lower item</label>
     </div>
     <div class="item">
-      <input type="checkbox">
-      <p>Everything in between should also be set to checked</p>
+      <input type="checkbox" id="item5">
+      <label for="item5">Everything in between should also be set to checked</label>
     </div>
     <div class="item">
-      <input type="checkbox">
-      <p>Try to do it without any libraries</p>
+      <input type="checkbox" id="item6">
+      <label for="item6">Try to do it without any libraries</label>
     </div>
     <div class="item">
-      <input type="checkbox">
-      <p>Just regular JavaScript</p>
+      <input type="checkbox" id="item7">
+      <label for="item7">Just regular JavaScript</label>
     </div>
     <div class="item">
-      <input type="checkbox">
-      <p>Good Luck!</p>
+      <input type="checkbox" id="item8">
+      <label for="item8">Good Luck!</label>
     </div>
     <div class="item">
-      <input type="checkbox">
-      <p>Don't forget to tweet your result!</p>
+      <input type="checkbox" id="item9">
+      <label for="item9">Don't forget to tweet your result!</label>
     </div>
-  </div>
+</div>
 
 <script>
+  const checkboxes = document.querySelectorAll('.item input[type="checkbox"]');
+  let firstItem, lastItem;
+
+  function handleCheck(e) {
+    const clickedIndex = Array.from(checkboxes).indexOf(e.target);
+
+    if (e.shiftKey && this.checked) {
+      if (firstItem){
+        lastItem = clickedIndex;
+      }
+      for (let i = firstItem; i <= lastItem; i++) {
+        checkboxes[i].checked = true;
+      }
+    } else {
+      firstItem = clickedIndex;
+      lastItem = '';
+    }
+
+    console.log('First Item:');
+    console.log(firstItem);
+    console.log('Last Item:');
+    console.log(lastItem);
+  }
+
+  checkboxes.forEach(checkbox => checkbox.addEventListener('click', handleCheck))
 </script>
 </body>
 </html>
