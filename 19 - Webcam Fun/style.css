@@ -58,3 +58,21 @@ html {
 .strip a:nth-child(5n+3) img { transform: rotate(8deg); }
 .strip a:nth-child(5n+4) img { transform: rotate(-11deg); }
 .strip a:nth-child(5n+5) img { transform: rotate(12deg); }
+
+.toggle-group {
+  display: flex;
+  gap: 10px;
+}
+.toggle-button {
+  padding: 10px 20px;
+  border: 2px solid #ccc;
+  background-color: white;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+.toggle-button.active {
+  background-color: #007bff;
+  color: white;
+  border-color: #0056b3;
+}
